@@ -5,8 +5,18 @@ const {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  onAuthStateChanged,
 } = require("firebase/auth");
 const {} = require("firebase/firestore");
+
+// listens to the state of the user
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log("User logged in:", user);
+  } else {
+    console.log("User logged out");
+  }
+});
 
 // sign-up
 router.post("/sign-up", function (req, res) {
