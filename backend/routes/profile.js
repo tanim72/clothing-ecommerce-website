@@ -1,10 +1,14 @@
 var express = require("express");
 var router = express.Router();
 const { db, storage, auth } = require("./firebase");
-const { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } = require("firebase/auth");
+const {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} = require("firebase/auth");
 const {} = require("firebase/firestore");
 
-// Define a route to handle sign-up requests
+// sign-up
 router.post("/sign-up", function (req, res) {
   const email = req.body.email;
   const password = req.body.password;
@@ -24,37 +28,32 @@ router.post("/sign-up", function (req, res) {
     });
 });
 
-router.post("/sign-in", function (req, res) {
-    const email = req.body.email;
-    const password = req.body.password;
+router.post("/login", function (req, res) {
+  const email = req.body.email;
+  const password = req.body.password;
 
-    if (!email || !password) {
-      res.status(400).send("Email and password are required.");
-      return;
-    }
-
-    signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            const user = userCredential.user;
-            res.status(200).send(user);
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            res.status(errorCode).send(errorMessage);
-        });
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      res.status(200).send(user);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      res.status(errorCode).send(errorMessage);
+    });
 });
 
 router.post("/logout", function (req, res) {
-    signOut(auth)
-        .then(() => {
-            res.status(200).send("Signed out");
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            res.status(errorCode).send(errorMessage);
-        });
+  signOut(auth)
+    .then(() => {
+      res.status(200).send("Signed out");
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      res.status(errorCode).send(errorMessage);
+    });
 });
 
 module.exports = router;

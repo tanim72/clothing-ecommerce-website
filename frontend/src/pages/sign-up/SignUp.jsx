@@ -10,26 +10,49 @@ function SignUp() {
 
     const form = document.querySelector("#signUpForm");
     const formData = new FormData(form);
-    if (formData.get("password") !== formData.get("confirmPassword")) {
+    const password = formData.get("password");
+    const email = formData.get("email");
+
+    if (invalidInputs(email, password)) {
+      return;
+    }
+
+    if (password !== formData.get("confirmPassword")) {
       alert("Passwords do not match");
       return;
-    } else {
-      const data = {
-        email: formData.get("email"),
-        password: formData.get("password"),
-      };
-      axios
-        .post("http://localhost:9000/profile/sign-up", data)
-        .then((res) => {
-          console.log(res.data);
-
-          form.reset();
-        })
-        .catch((err) => {
-          console.log(err);
-        });
     }
+
+    const data = {
+      email: email,
+      password: password,
+    };
+
+    axios
+      .post("http://localhost:9000/profile/sign-up", data)
+      .then((res) => {
+        console.log(res.data);
+
+        form.reset();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
+
+  const invalidInputs = (email, password) => {
+    if (email === "" || password === "") {
+      alert("Please fill all the fields");
+      return true;
+    }
+
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters long");
+      return true;
+    }
+
+    return false;
+  };
+
 
   return (
     <div className="signUp">
@@ -42,7 +65,11 @@ function SignUp() {
           <input type="password" name="password" />
           <h5>Confirm Password</h5>
           <input type="password" name="confirmPassword" />
-          <button type="submit" className="signUp-signInButton" onClick={handleSignUp}>
+          <button
+            type="submit"
+            className="signUp-signInButton"
+            onClick={handleSignUp}
+          >
             Sign Up
           </button>
         </form>
