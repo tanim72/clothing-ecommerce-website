@@ -4,7 +4,10 @@ import Login from './login/Login.jsx';
 
 function App() {
   return (
-    <Login />
+    <>
+      <SignUp />
+      <Login />
+    </>
   );
 }
 

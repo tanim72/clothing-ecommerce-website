@@ -7,7 +7,7 @@ const {
   signOut,
   onAuthStateChanged,
 } = require("firebase/auth");
-const {} = require("firebase/firestore");
+const { doc, collection, setDoc } = require("firebase/firestore");
 
 // listens to the state of the user
 onAuthStateChanged(auth, (user) => {
@@ -29,14 +29,29 @@ router.post("/sign-up", function (req, res) {
       // Extract the user object from the UserCredential object
       const user = userCredential.user;
 
+      // Add the user to the database
+      addNewUserToDatabase(user.uid, email);
+
       // Send the user object as a response
-      res.status(200).json(user);
+      res.status(200).json({ uid: user.uid });
     })
     .catch(function (error) {
       console.log("Error creating new user:", error);
       res.status(500).send("Error creating new user.");
     });
 });
+
+// helper function for creating a new user in the database
+const addNewUserToDatabase = async (userID, email) => {
+  try {
+    await setDoc(doc(db, "users", userID), {
+      email: email,
+    });
+    console.log("User created successfully");
+  } catch (error) {
+    console.log("Error creating user:", error);
+  }
+};
 
 router.post("/login", function (req, res) {
   const email = req.body.email;
@@ -45,12 +60,17 @@ router.post("/login", function (req, res) {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      res.status(200).send(user);
+      res.status(200).send(user.uid);
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      res.status(errorCode).send(errorMessage);
+      console.log("Error logging in:", errorMessage);
+      if (errorCode === "auth/user-not-found") {
+        res.status(404).send("User not found");
+      } else {
+        res.status(errorCode).send(errorMessage);
+      }
     });
 });
 
