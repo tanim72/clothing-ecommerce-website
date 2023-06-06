@@ -1,7 +1,6 @@
 import React from "react";
 import "./SignUp.css";
 import axios from "axios";
-import Logout from "../../components/Logout";
 
 function SignUp() {
   const handleSignUp = (e) => {

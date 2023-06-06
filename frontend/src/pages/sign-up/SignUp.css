@@ -3,12 +3,14 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  width: 100vw;
+  background-color: var(--orange);
 }
 
 .signUp-container {
   display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
   color: white;
   padding: 20px;
   width: 800px;
@@ -19,11 +21,11 @@
 }
 
 .signUp-container img {
-    object-fit: cover;
-    max-height: calc(100% - 100px);
-    max-width: calc(100% - 100px);
-    align-self: center;
-    justify-self: center;
+  object-fit: cover;
+  max-height: calc(100% - 100px);
+  max-width: calc(100% - 100px);
+  align-self: center;
+  justify-self: center;
 }
 
 .signUp-container > form {
