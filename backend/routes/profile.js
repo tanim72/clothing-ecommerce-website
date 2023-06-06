@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const { db, storage, auth } = require("./firebase");
-const { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } = require("firebase/auth");
+const { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } = require("firebase/auth");
 const {} = require("firebase/firestore");
 
 // Define a route to handle sign-up requests
@@ -25,7 +25,6 @@ router.post("/sign-up", function (req, res) {
 });
 
 router.post("/sign-in", function (req, res) {
-    const auth = getAuth();
     const email = req.body.email;
     const password = req.body.password;
 
@@ -46,8 +45,7 @@ router.post("/sign-in", function (req, res) {
         });
 });
 
-router.post("/sign-out", function (req, res) {
-    const auth = getAuth();
+router.post("/logout", function (req, res) {
     signOut(auth)
         .then(() => {
             res.status(200).send("Signed out");
@@ -57,25 +55,6 @@ router.post("/sign-out", function (req, res) {
             const errorMessage = error.message;
             res.status(errorCode).send(errorMessage);
         });
-});
-
-function authMiddleware(req, res, next) {
-  const auth = getAuth();
-  const user = auth.currentUser;
-
-  if (user) {
-    req.user = user;
-  }
-
-  next();
-}
-
-router.get("/id", authMiddleware, function (req, res) {
-  if (req.user) {
-    res.status(200).send(req.user.uid);
-  } else {
-    res.status(500).send("You are not signed in.");
-  }
 });
 
 module.exports = router;

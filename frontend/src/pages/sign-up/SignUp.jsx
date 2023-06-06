@@ -1,6 +1,7 @@
 import React from "react";
 import "./SignUp.css";
 import axios from "axios";
+import Logout from "../../components/Logout";
 
 function SignUp() {
 
@@ -48,6 +49,7 @@ function SignUp() {
         <p>By signing up, you agree to our Terms of Use and Privacy Policy.</p>
         <p>Already have an account? Sign In</p>
       </div>
+      <Logout />
     </div>
   );
 }
