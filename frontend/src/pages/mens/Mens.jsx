@@ -1,5 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { Box, Card, CardContent, Divider, Button } from "@mui/material";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Typography from "@mui/material/Typography";
@@ -48,45 +50,80 @@ export default function Mens() {
 
 function ProductCard(props) {
   const [size, setSize] = useState("");
+
+  const [state, setState] = useState({
+    open: false,
+    vertical: "top",
+    horizontal: "center",
+  });
+  const { vertical, horizontal, open } = state;
+
+  const handleClick = (newState) => () => {
+    setState({ open: true, ...newState });
+  };
+
+  const handleClose = () => {
+    setState({ ...state, open: false });
+  };
+
   return (
-    <Card
-      variant="outlined"
-      style={{
-        margin: "10px",
-        width: "430px",
-        height: "550px",
-      }}
-    >
-      <CardContent>
-        <Typography variant="h4">{props.title}</Typography>
-        <Box marginLeft={"-5%"} marginBottom={"1.2%"}>
-          <Divider width={"105%"} />
-        </Box>
-        <Typography variant="h5">{props.brand}</Typography>
-        <Typography variant="h5">${props.price}</Typography>
-        <Typography variant="h5">{props.rating}/5</Typography>
-        <img
-          alt="Product Thumbnail"
-          src={props.thumbnail}
-          width="200px"
-          height="200px"
-        />
-        <Box>
-          <ToggleButtonGroup
-            value={size}
-            color="primary"
-            exclusive
-            onChange={(event, alignment) => setSize(alignment)}
-          >
-            <ToggleButton value="S">S</ToggleButton>
-            <ToggleButton value="M">M</ToggleButton>
-            <ToggleButton value="L">L</ToggleButton>
-          </ToggleButtonGroup>
-        </Box>
-        <Box>
-          <Button variant="contained">Add to cart</Button>
-        </Box>
-      </CardContent>
-    </Card>
+    <>
+      <Card
+        variant="outlined"
+        style={{
+          margin: "10px",
+          width: "430px",
+          height: "550px",
+        }}
+      >
+        <CardContent>
+          <Typography variant="h4">{props.title}</Typography>
+          <Box marginLeft={"-5%"} marginBottom={"1.2%"}>
+            <Divider width={"105%"} />
+          </Box>
+          <Typography variant="h5">{props.brand}</Typography>
+          <Typography variant="h5">${props.price}</Typography>
+          <Typography variant="h5">{props.rating}/5</Typography>
+          <img
+            alt="Product Thumbnail"
+            src={props.thumbnail}
+            width="200px"
+            height="200px"
+          />
+          <Box>
+            <ToggleButtonGroup
+              value={size}
+              color="primary"
+              exclusive
+              onChange={(event, alignment) => setSize(alignment)}
+            >
+              <ToggleButton value="S">S</ToggleButton>
+              <ToggleButton value="M">M</ToggleButton>
+              <ToggleButton value="L">L</ToggleButton>
+            </ToggleButtonGroup>
+          </Box>
+          <Box>
+            <Button
+              variant="contained"
+              onClick={handleClick({
+                vertical: "top",
+                horizontal: "right",
+              })}
+            >
+              Add to cart
+            </Button>
+          </Box>
+        </CardContent>
+      </Card>
+      <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        open={open}
+        autoHideDuration={3300}
+        onClose={handleClose}
+        key={vertical + horizontal}
+      >
+        <Alert severity="success">Added to cart!</Alert>
+      </Snackbar>
+    </>
   );
 }
