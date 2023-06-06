@@ -1,29 +1,26 @@
 var express = require("express");
 var router = express.Router();
-const { db, storage } = require("./firebase");
+const { db, storage, auth } = require("./firebase");
 const { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } = require("firebase/auth");
 const {} = require("firebase/firestore");
 
-
+// Define a route to handle sign-up requests
 router.post("/sign-up", function (req, res) {
-  const auth = getAuth();
   const email = req.body.email;
   const password = req.body.password;
 
-  if (!email || !password) {
-    res.status(400).send("Email and password are required.");
-    return;
-  }
-
+  // Create a new user with the given email and password
   createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+    .then(function (userCredential) {
+      // Extract the user object from the UserCredential object
       const user = userCredential.user;
-      res.status(200).send(user);
+
+      // Send the user object as a response
+      res.status(200).json(user);
     })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      res.status(errorCode).send(errorMessage);
+    .catch(function (error) {
+      console.log("Error creating new user:", error);
+      res.status(500).send("Error creating new user.");
     });
 });
 
