@@ -35,15 +35,13 @@ export default function ClothingCard(props) {
 
   const addToCart = () => {
     let url = "http://localhost:9000/product/add-to-cart/" + props.userUID;
-    axios
-      .put(url, {
-        name: props.title,
-        price: props.price,
-        size: size,
-        quantity: 1,
-        url: props.thumbnail,
-      })
-      .then((res) => console.log(res));
+    axios.put(url, {
+      name: props.title,
+      price: props.price,
+      size: size,
+      quantity: 1,
+      url: props.thumbnail,
+    });
   };
 
   const handleClose = () => {

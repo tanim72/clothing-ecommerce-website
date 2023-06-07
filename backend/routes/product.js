@@ -31,7 +31,7 @@ router.put("/add-to-cart/:userUID", async (req, res, next) => {
   await updateDoc(docRef, {
     items: oldItems,
   });
-  res.send(oldItems[1].name + newItem.name + oldItems[1].size + newItem.size);
+  res.send("Updated Cart.");
 });
 
 router.get("/mens/shirts", function (req, res, next) {
