@@ -62,12 +62,13 @@ function ProductCard(props) {
     horizontal: "right",
   });
   const { vertical, horizontal, open } = state;
-  const { verticalErr, horizontalErr, openErr } = stateErr;
+  const { openErr } = stateErr;
 
   const handleClick = (newState) => () => {
     if (size != null) {
       setState({ open: true, ...newState });
     } else {
+      console.log("size is null");
       setStateErr({ openErr: true, ...newState });
     }
   };
