@@ -5,6 +5,7 @@ import Cart from "./cart/Cart";
 import axios from "axios";
 import CartQuantity from "./cart/CartQuantity";
 import Mens from "./mens/Mens";
+import SignUp from "./sign-up/SignUp";
 
 function App() {
   const cartId = "pU6YrRuSDYwBchVp2p68";
@@ -39,8 +40,8 @@ function App() {
           {/* Other components
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} /> */}
+        <Route path="/login" element={<Login />} />*/}
+        <Route path="/signup" element={<SignUp />} /> 
           <Route path="/mens" element={<Mens />} />
           <Route path="/cart/:cartId" element={<Cart />} />
         </Routes>
