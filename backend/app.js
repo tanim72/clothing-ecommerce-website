@@ -3,13 +3,17 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const dotenv = require("dotenv");
+dotenv.config();
 
 var productRouter = require("./routes/product");
 var profileRouter = require("./routes/profile");
-var checkoutRouter = require("./routes/checkout");
+var checkoutRouter = require("./routes/payment");
 var cartRouter = require("./routes/cart");
 
+var cors = require("cors");
 var app = express();
+app.use(cors());
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -37,7 +41,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/product", productRouter);
 app.use("/profile", profileRouter);
-app.use("/checkout", checkoutRouter);
+app.use("/payment", checkoutRouter);
 app.use("/cart", cartRouter);
 
 // catch 404 and forward to error handler
