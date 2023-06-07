@@ -23,26 +23,28 @@ export default function Mens() {
 
   return (
     <>
-      <h1>Mens</h1>
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          alignItems: "center",
-          marginBottom: "10px",
-        }}
-      >
-        {mensShirts &&
-          mensShirts.map((obj, key) => (
-            <ProductCard
-              title={obj.title}
-              brand={obj.brand}
-              price={obj.price}
-              rating={obj.rating}
-              thumbnail={obj.thumbnail}
-            />
-          ))}
+      <div style={{ textAlign: "center" }}>
+        <h1>Mens</h1>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            alignItems: "center",
+            marginBottom: "10px",
+          }}
+        >
+          {mensShirts &&
+            mensShirts.map((obj, key) => (
+              <ProductCard
+                title={obj.title}
+                brand={obj.brand}
+                price={obj.price}
+                rating={obj.rating}
+                thumbnail={obj.thumbnail}
+              />
+            ))}
+        </div>
       </div>
     </>
   );
@@ -119,7 +121,7 @@ function ProductCard(props) {
               variant="contained"
               onClick={handleClick({
                 vertical: "top",
-                horizontal: "right",
+                horizontal: "center",
               })}
             >
               Add to cart
