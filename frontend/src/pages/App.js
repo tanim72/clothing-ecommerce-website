@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './navbar/Navbar';
-import Cart from './cart/Cart';
-import axios from 'axios';
-import CartQuantity from './cart/CartQuantity';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./navbar/Navbar";
+import Cart from "./cart/Cart";
+import axios from "axios";
+import CartQuantity from "./cart/CartQuantity";
 import Login from "./login/Login.jsx";
 import SignUp from "./sign-up/SignUp.jsx";
-import "./App.css"
+import "./App.css";
 import Mens from "./mens/Mens";
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
           {/* <Route path="/products" element={<Products />} /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} /> */
-        <Route path="/mens" element={<Mens />} />
+          <Route path="/mens" element={<Mens />} />
           <Route path="/cart/:cartId" element={<Cart />} />
         </Routes>
       </CartQuantity.Provider>
