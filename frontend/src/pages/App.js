@@ -9,6 +9,8 @@ import SignUp from "./sign-up/SignUp.jsx";
 import "./App.css";
 import Mens from "./mens/Mens";
 import Cookies from "js-cookie";
+import StripeContainer from './checkout/StripeContainer';
+ 
 
 function App() {
   //const cartId = "xjq4swtq4rPECuJHCrzhXxKGIQM2";
@@ -48,6 +50,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} /> */
           <Route path="/mens" element={<Mens />} />
           <Route path="/cart/:cartId" element={<Cart />} />
+          <Route path="/checkout" element={<StripeContainer />} />
         </Routes>
       </CartQuantity.Provider>
     </Router>
