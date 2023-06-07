@@ -1,18 +1,25 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 import ClothingCard from "../ClothingCard";
 
 export default function Mens() {
   const [mensShirts, setMensShirts] = useState([]);
   const [mensWatches, setMensWatches] = useState([]);
   const [mensShoes, setMensShoes] = useState([]);
+  const [userUID, setUserUID] = useState(null);
 
   useEffect(() => {
     getMensShirts();
     getMensWatches();
     getMensShoes();
+    getUserUID();
     // eslint-disable-next-line
   }, []);
+
+  const getUserUID = () => {
+    setUserUID(Cookies.get("uid"));
+  };
 
   const getMensShirts = () => {
     axios.get("http://localhost:9000/product/mens/shirts").then((result) => {
@@ -54,6 +61,7 @@ export default function Mens() {
                 rating={obj.rating}
                 thumbnail={obj.thumbnail}
                 isClothing={true}
+                userUID={userUID}
               />
             ))}
           {mensWatches &&
@@ -65,6 +73,7 @@ export default function Mens() {
                 rating={obj.rating}
                 thumbnail={obj.thumbnail}
                 isClothing={true}
+                userUID={userUID}
               />
             ))}
           {mensShoes &&
@@ -76,6 +85,7 @@ export default function Mens() {
                 rating={obj.rating}
                 thumbnail={obj.thumbnail}
                 isClothing={false}
+                userUID={userUID}
               />
             ))}
         </div>

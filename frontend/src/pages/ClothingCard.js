@@ -5,6 +5,7 @@ import Alert from "@mui/material/Alert";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Typography from "@mui/material/Typography";
+import axios from "axios";
 
 export default function ClothingCard(props) {
   const [size, setSize] = useState(null);
@@ -25,10 +26,20 @@ export default function ClothingCard(props) {
   const handleClick = (newState) => () => {
     if (size != null) {
       setState({ open: true, ...newState });
+      addToCart();
     } else {
       console.log("size is null");
       setStateErr({ openErr: true, ...newState });
     }
+  };
+
+  const addToCart = () => {
+    let url = "http://localhost:9000/product/add-to-cart/" + props.userUID;
+    axios.put(url, {
+      name: props.title,
+      price: props.price,
+      size: size,
+    });
   };
 
   const handleClose = () => {

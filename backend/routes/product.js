@@ -1,8 +1,22 @@
 var express = require("express");
 const axios = require("axios");
 var router = express.Router();
+const { db } = require("./firebase");
+const { doc, updateDoc, getDoc } = require("firebase/firestore");
 
-/* GET users listing. */
+router.put("/add-to-cart/:userUID", async (req, res, next) => {
+  const userUID = req.params.userUID;
+  const newItem = req.body;
+  const docRef = doc(db, "carts", userUID);
+  const cartSnapshot = await getDoc(docRef);
+  let oldItems = cartSnapshot.data().items;
+  oldItems.push(newItem);
+
+  await updateDoc(docRef, {
+    items: oldItems,
+  });
+});
+
 router.get("/mens/shirts", function (req, res, next) {
   axios
     .get("https://dummyjson.com/products/category/mens-shirts")
