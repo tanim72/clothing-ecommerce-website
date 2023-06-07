@@ -46,6 +46,11 @@
   margin-bottom: 10px;
 }
 
+.login-container form > p > a {
+  color: white;
+  font-weight: bold;
+}
+
 .login-container > form > input {
   font-size: 1rem;
   padding: 5px;

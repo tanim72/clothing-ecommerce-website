@@ -1,7 +1,9 @@
 import React from "react";
 import "./Login.css";
 import axios from "axios";
-import Logout from "../../components/Logout";
+import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
+import CookiePopUp from "../sign-up/components/CookiePopUp";
 
 function Login() {
   const handleLogin = (e) => {
@@ -24,6 +26,12 @@ function Login() {
       .then((res) => {
         console.log(res.data);
 
+        if (Cookies.get("cookieConsent")) {
+          Cookies.set("uid", res.data, { expires: 365 });
+        } else {
+          localStorage.setItem("uid", res.data);
+        }
+
         form.reset();
       })
       .catch((err) => {
@@ -40,14 +48,18 @@ function Login() {
           <input type="email" name="email" />
           <h5>Password</h5>
           <input type="password" name="password" />
-          <p>By signing in, you agree to our Terms of Use and Privacy Policy.</p>
-        <p>New to this site? Sign Up</p>
+          <p>
+            By signing in, you agree to our Terms of Use and Privacy Policy.
+          </p>
+          <p>
+            New to this site? <Link to="/signup">Sign Up</Link>
+          </p>
           <button
             type="submit"
             className="login-signInButton"
             onClick={handleLogin}
           >
-            Sign In
+            Sign in
           </button>
         </form>
         <img
@@ -55,6 +67,7 @@ function Login() {
           alt="men standing"
         />
       </div>
+      <CookiePopUp />
     </div>
   );
 }
