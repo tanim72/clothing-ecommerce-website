@@ -16,13 +16,12 @@ function Navbar() {
                     </Button>
                 </Typography>
                 <Button color="inherit" component={Link} to="/products">Products</Button>
-                <Button color="inherit" component={Link} to="/cart">
+                <Button color="inherit" component={Link} to="/cart/:cartId">
                     <Badge badgeContent={numberOfItemsInCart} color="error">
                         <ShoppingCartIcon />
                     </Badge>
                 </Button>
-                {/*<Button color="inherit" component={Link} to="/login">Login</Button>
-        <Button color="inherit" component={Link} to="/signup">Sign Up</Button>*/}
+                <Button color="inherit" component={Link} to="/signup">Sign Up</Button>
             </Toolbar>
         </AppBar>
     );
