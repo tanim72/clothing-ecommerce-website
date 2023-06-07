@@ -10,11 +10,28 @@ router.put("/add-to-cart/:userUID", async (req, res, next) => {
   const docRef = doc(db, "carts", userUID);
   const cartSnapshot = await getDoc(docRef);
   let oldItems = cartSnapshot.data().items;
-  oldItems.push(newItem);
+
+  let itemAlreadyInCart = false;
+
+  for (let i = 0; i < oldItems.length; i++) {
+    if (
+      oldItems[i].name === newItem.name &&
+      oldItems[i].size === newItem.size
+    ) {
+      oldItems[i].quantity = oldItems[i].quantity + 1;
+      itemAlreadyInCart = true;
+      break;
+    }
+  }
+
+  if (!itemAlreadyInCart) {
+    oldItems.push(newItem);
+  }
 
   await updateDoc(docRef, {
     items: oldItems,
   });
+  res.send(oldItems[1].name + newItem.name + oldItems[1].size + newItem.size);
 });
 
 router.get("/mens/shirts", function (req, res, next) {
