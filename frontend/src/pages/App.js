@@ -6,6 +6,7 @@ import axios from "axios";
 import CartQuantity from "./cart/CartQuantity";
 import Mens from "./mens/Mens";
 import SignUp from "./sign-up/SignUp";
+import "../App.css"
 
 function App() {
   const cartId = "pU6YrRuSDYwBchVp2p68";
