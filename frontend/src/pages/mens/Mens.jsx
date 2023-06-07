@@ -49,21 +49,32 @@ export default function Mens() {
 }
 
 function ProductCard(props) {
-  const [size, setSize] = useState("");
+  const [size, setSize] = useState(null);
 
   const [state, setState] = useState({
     open: false,
     vertical: "top",
     horizontal: "center",
   });
+  const [stateErr, setStateErr] = useState({
+    openErr: false,
+    vertical: "top",
+    horizontal: "right",
+  });
   const { vertical, horizontal, open } = state;
+  const { verticalErr, horizontalErr, openErr } = stateErr;
 
   const handleClick = (newState) => () => {
-    setState({ open: true, ...newState });
+    if (size != null) {
+      setState({ open: true, ...newState });
+    } else {
+      setStateErr({ openErr: true, ...newState });
+    }
   };
 
   const handleClose = () => {
     setState({ ...state, open: false });
+    setStateErr({ ...stateErr, openErr: false });
   };
 
   return (
@@ -123,6 +134,17 @@ function ProductCard(props) {
         key={vertical + horizontal}
       >
         <Alert severity="success">Added to cart!</Alert>
+      </Snackbar>
+      <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        open={openErr}
+        autoHideDuration={3300}
+        onClose={handleClose}
+        key={vertical + horizontal}
+      >
+        <Alert severity="error">
+          Please select a size before adding to cart.
+        </Alert>
       </Snackbar>
     </>
   );
