@@ -44,6 +44,7 @@ function App() {
           {/* <Route path="/products" element={<Products />} /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} /> */
+          <Route path="/womens" element={<Womens />} />
           <Route path="/mens" element={<Mens />} />
           <Route path="/cart/:cartId" element={<Cart />} />
         </Routes>
