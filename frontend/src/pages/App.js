@@ -7,17 +7,20 @@ import CartQuantity from './cart/CartQuantity';
 import Login from "./login/Login.jsx";
 import SignUp from "./sign-up/SignUp.jsx";
 import "./App.css"
+import Mens from "./mens/Mens";
 
 function App() {
-  const cartId = 'pU6YrRuSDYwBchVp2p68';
+  const cartId = "pU6YrRuSDYwBchVp2p68";
   const [numberOfItemsInCart, setNumberOfItemsInCart] = useState(0);
 
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:9000/cart/${cartId}`);
+        const { data } = await axios.get(
+          `http://localhost:9000/cart/${cartId}`
+        );
         let quantity = 0;
-        data.items.forEach(item => {
+        data.items.forEach((item) => {
           quantity += item.quantity;
         });
         setNumberOfItemsInCart(quantity);
@@ -31,13 +34,16 @@ function App() {
 
   return (
     <Router>
-      <CartQuantity.Provider value={{ numberOfItemsInCart, setNumberOfItemsInCart }}>
+      <CartQuantity.Provider
+        value={{ numberOfItemsInCart, setNumberOfItemsInCart }}
+      >
         <Navbar />
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
           {/* <Route path="/products" element={<Products />} /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} /> */
+        <Route path="/mens" element={<Mens />} />
           <Route path="/cart/:cartId" element={<Cart />} />
         </Routes>
       </CartQuantity.Provider>
@@ -46,4 +52,3 @@ function App() {
 }
 
 export default App;
-
