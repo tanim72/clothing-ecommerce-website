@@ -9,15 +9,31 @@ import axios from "axios";
 
 export default function Mens() {
   const [mensShirts, setMensShirts] = useState([]);
+  const [mensWatches, setMensWatches] = useState([]);
+  const [mensShoes, setMensShoes] = useState([]);
 
   useEffect(() => {
     getMensShirts();
+    getMensWatches();
+    getMensShoes();
     // eslint-disable-next-line
   }, []);
 
   const getMensShirts = () => {
     axios.get("http://localhost:9000/product/mens/shirts").then((result) => {
       setMensShirts(result.data.products);
+    });
+  };
+
+  const getMensWatches = () => {
+    axios.get("http://localhost:9000/product/mens/watches").then((result) => {
+      setMensWatches(result.data.products);
+    });
+  };
+
+  const getMensShoes = () => {
+    axios.get("http://localhost:9000/product/mens/shoes").then((result) => {
+      setMensShoes(result.data.products);
     });
   };
 
@@ -36,12 +52,35 @@ export default function Mens() {
         >
           {mensShirts &&
             mensShirts.map((obj, key) => (
-              <ProductCard
+              <ClothingCard
                 title={obj.title}
                 brand={obj.brand}
                 price={obj.price}
                 rating={obj.rating}
                 thumbnail={obj.thumbnail}
+                isClothing={true}
+              />
+            ))}
+          {mensWatches &&
+            mensWatches.map((obj, key) => (
+              <ClothingCard
+                title={obj.title}
+                brand={obj.brand}
+                price={obj.price}
+                rating={obj.rating}
+                thumbnail={obj.thumbnail}
+                isClothing={true}
+              />
+            ))}
+          {mensShoes &&
+            mensShoes.map((obj, key) => (
+              <ClothingCard
+                title={obj.title}
+                brand={obj.brand}
+                price={obj.price}
+                rating={obj.rating}
+                thumbnail={obj.thumbnail}
+                isClothing={false}
               />
             ))}
         </div>
@@ -50,7 +89,7 @@ export default function Mens() {
   );
 }
 
-function ProductCard(props) {
+function ClothingCard(props) {
   const [size, setSize] = useState(null);
 
   const [state, setState] = useState({
@@ -105,16 +144,33 @@ function ProductCard(props) {
             height="200px"
           />
           <Box>
-            <ToggleButtonGroup
-              value={size}
-              color="primary"
-              exclusive
-              onChange={(event, alignment) => setSize(alignment)}
-            >
-              <ToggleButton value="S">S</ToggleButton>
-              <ToggleButton value="M">M</ToggleButton>
-              <ToggleButton value="L">L</ToggleButton>
-            </ToggleButtonGroup>
+            {props.isClothing ? (
+              <ToggleButtonGroup
+                value={size}
+                color="primary"
+                exclusive
+                onChange={(event, alignment) => setSize(alignment)}
+              >
+                <ToggleButton value="S">S</ToggleButton>
+                <ToggleButton value="M">M</ToggleButton>
+                <ToggleButton value="L">L</ToggleButton>
+              </ToggleButtonGroup>
+            ) : (
+              <ToggleButtonGroup
+                value={size}
+                color="primary"
+                exclusive
+                onChange={(event, alignment) => setSize(alignment)}
+              >
+                <ToggleButton value="6">6</ToggleButton>
+                <ToggleButton value="7">7</ToggleButton>
+                <ToggleButton value="8">8</ToggleButton>
+                <ToggleButton value="9">9</ToggleButton>
+                <ToggleButton value="10">10</ToggleButton>
+                <ToggleButton value="11">11</ToggleButton>
+                <ToggleButton value="12">12</ToggleButton>
+              </ToggleButtonGroup>
+            )}
           </Box>
           <Box>
             <Button
