@@ -5,6 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const dotenv = require("dotenv");
 dotenv.config();
+var cors = require("cors");
 
 var productRouter = require("./routes/product");
 var profileRouter = require("./routes/profile");
@@ -13,6 +14,8 @@ var cartRouter = require("./routes/cart");
 
 var cors = require("cors");
 var app = express();
+app.use(cors());
+
 app.use(cors());
 
 app.use((req, res, next) => {
@@ -38,6 +41,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+app.get('/', function(req, res) {
+  res.send('e-commerce backend');
+});
 
 app.use("/product", productRouter);
 app.use("/profile", profileRouter);

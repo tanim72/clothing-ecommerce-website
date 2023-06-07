@@ -1,4 +1,4 @@
-.login {
+.signUp {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,7 +7,7 @@
   background-color: var(--orange);
 }
 
-.login-container {
+.signUp-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
@@ -20,7 +20,7 @@
   overflow: hidden;
 }
 
-.login-container img {
+.signUp-container img {
   object-fit: cover;
   max-height: calc(100% - 100px);
   max-width: calc(100% - 100px);
@@ -28,42 +28,42 @@
   justify-self: center;
 }
 
-.login-container > form {
+.signUp-container > form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.login-container > form > h1 {
+.signUp-container > form > h1 {
   font-weight: bold;
   font-size: 3rem;
   margin-bottom: 20px;
 }
 
-.login-container form p {
+.signUp-container form p {
   font-size: 0.8rem;
   margin-bottom: 10px;
 }
 
-.login-container form > p > a {
+.signUp-container form > p > a {
   color: white;
   font-weight: bold;
 }
 
-.login-container > form > input {
+.signUp-container > form > input {
   font-size: 1rem;
   padding: 5px;
   margin-bottom: 20px;
   width: 80%;
 }
 
-.login-container > form > h5 {
+.signUp-container > form > h5 {
   font-weight: bold;
   font-size: 1rem;
 }
 
-.login-container > form > button {
+.signUp-container > form > button {
   background-color: var(--red);
   color: white;
   border: none;
@@ -75,6 +75,6 @@
   transition: transform 0.2s ease-in-out;
 }
 
-.login-container > form > button:active {
+.signUp-container > form > button:active {
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
