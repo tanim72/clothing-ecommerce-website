@@ -8,6 +8,7 @@ import Login from "./login/Login.jsx";
 import SignUp from "./sign-up/SignUp.jsx";
 import "./App.css";
 import Mens from "./mens/Mens";
+import Home from "./home/Home.jsx";
 
 function App() {
   const cartId = "pU6YrRuSDYwBchVp2p68";
@@ -39,7 +40,7 @@ function App() {
       >
         <Navbar />
         <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<Home />} />
           {/* <Route path="/products" element={<Products />} /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} /> */

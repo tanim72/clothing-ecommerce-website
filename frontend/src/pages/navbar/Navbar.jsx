@@ -8,7 +8,7 @@ function Navbar() {
     const { numberOfItemsInCart } = useContext(CartQuantity);
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" sx={{ backgroundColor: "#264653"}}>
             <Toolbar>
                 <Typography variant="h6" style={{ flexGrow: 1 }}>
                     <Button color="inherit" component={Link} to="/">
