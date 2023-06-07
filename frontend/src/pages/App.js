@@ -7,9 +7,12 @@ import CartQuantity from "./cart/CartQuantity";
 import Mens from "./mens/Mens";
 import SignUp from "./sign-up/SignUp";
 import "../App.css"
+import Cookies from "js-cookie";
 
 function App() {
-  const cartId = "pU6YrRuSDYwBchVp2p68";
+  //const cartId = "pU6YrRuSDYwBchVp2p68";
+  const cartId = Cookies.get("uid")
+
   const [numberOfItemsInCart, setNumberOfItemsInCart] = useState(0);
 
   useEffect(() => {
