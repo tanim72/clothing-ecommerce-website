@@ -33,7 +33,7 @@ router.post("/sign-up", function (req, res) {
       addNewUserToDatabase(user.uid, email);
 
       // Send the user object as a response
-      res.status(200).json({ uid: user.uid });
+      res.status(200).json(user.uid);
     })
     .catch(function (error) {
       console.log("Error creating new user:", error);
