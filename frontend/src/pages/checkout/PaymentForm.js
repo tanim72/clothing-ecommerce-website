@@ -1,66 +1,22 @@
 import React, {useState} from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
-
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import TextField from '@mui/material/TextField';
+import {TextField, CardContent, Card, Button,ThemeProvider, createTheme, Typography} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-// stripe
-// Util imports
 import {styled} from '@mui/system';
-// Custom Components
 import CardInput from './CardInput';
 import "./Checkout.css";
 
-<<<<<<< HEAD
-// const appearance = {
-//     theme: 'stripe'
-//   };
-const CARD_OPTIONS = {
-	iconStyle: "solid",
-	style: {
-		base: {
-			iconColor: "#c4f0ff",
-			color: "#fff",
-			fontWeight: 500,
-			fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
-			fontSize: "16px",
-			fontSmoothing: "antialiased",
-			":-webkit-autofill": { color: "#fce883" },
-			"::placeholder": { color: "#87bbfd" }
-		},
-		invalid: {
-			iconColor: "#ffc7ee",
-			color: "#ffc7ee"
-		}
-	}
-}
-=======
 
-// const CARD_OPTIONS = {
-// 	iconStyle: "solid",
-// 	style: {
-// 		base: {
-// 			iconColor: "#c4f0ff",
-// 			color: "#fff",
-// 			fontWeight: 500,
-// 			fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
-// 			fontSize: "16px",
-// 			fontSmoothing: "antialiased",
-// 			":-webkit-autofill": { color: "#fce883" },
-// 			"::placeholder": { color: "#87bbfd" }
-// 		},
-// 		invalid: {
-// 			iconColor: "#ffc7ee",
-// 			color: "#ffc7ee"
-// 		}
-// 	}
-// }
->>>>>>> 167c3b6575ecf9398d39ca602456c870cab85742
 
 export default function PaymentForm() {
+    const theme = createTheme({
+        typography: {
+            fontFamily: '"Poppins", sans-serif',
+            fontWeight: 400,
+            fontStyle: 'normal',
+        },
+    });
     const [success, setSuccess] = useState(false);
     const stripe = useStripe();
     const elements = useElements();
@@ -126,17 +82,18 @@ export default function PaymentForm() {
 }
 
     return (
+        <ThemeProvider theme={theme}>
         <>
         {!success ?
         <Card className={classes.root}>
-        <CardContent className={classes.content}>
+        <CardContent style = {{backgroundColor: '#f4a261'}} className={classes.content}>
             <div class="wrapperShop">
-            <h1>Pay with Stripe</h1>
+            <Typography style = {{marginTop:20}} variant="h5">Pay With Stripe</Typography>
             </div>
           <TextField
-            label='Email'
+            label='Alternate Email (optional)'
+            style = {{backgroundColor: '#ffffff'}}
             id='outlined-email-input'
-            helperText={`Alternate email to recive updates on delivery (optional)`}
             margin='normal'
             variant='outlined'
             type='email'
@@ -154,17 +111,13 @@ export default function PaymentForm() {
         </CardContent>
       </Card>
         : 
-        <div class="wrapperShop">
-            <h1>Your Payment Was Succesful!</h1>
-            <Button style={{ backgroundColor: '#2a9d8f', color: 'white' }} onClick = {() => navigate('/')} color="primary">Continue Shopping</Button>
+        <div style = {{backgroundColor: '#f4a261'}} class="wrapperShop">
+            <Typography style = {{paddingTop:20}} variant="h5">Your Payment Was Succesful!</Typography>
+            <Button style={{ backgroundColor: '#2a9d8f', color: 'white', marginTop:20, marginBottom:20 }} onClick = {() => navigate('/')} color="primary">Continue Shopping</Button>
 
         </div>
         }
         </>
+        </ThemeProvider>
     )
 }
-
-// font-family: 'Poppins', sans-serif;
-// 	font-weight: 400;
-// 	color: #e76f51;
-// 	text-align: center;
