@@ -1,7 +1,4 @@
-/*
-  Josh's Custom CSS Reset
-  https://www.joshwcomeau.com/css/custom-css-reset/
-*/
+
 
 .StripeElement {
     height: 40px;
@@ -64,35 +61,6 @@
     position: absolute;
     top: 50%;
 }
-/* 
-button {
-	display: block;
-	font-size: 16px;
-	width: calc(100% - 30px);
-	height: 40px;
-	margin: 40px 15px 0;
-	background-color: #f6a4eb;
-	box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #ffb9f6;
-	border-radius: 4px;
-	color: #fff;
-	font-weight: 600;
-	cursor: pointer;
-	transition: all 100ms ease-in-out;
-	will-change: transform, background-color, box-shadow;
-	border: none;
-}
-
-button:active {
-	background-color: #d782d9;
-	box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #e298d8;
-	transform: scale(0.99);
-}
-
-.App {
-	margin-left: 25%;
-	margin-top: 5%;
-	margin-right: 25%;
-} */
 
 h1,
 h3 {
@@ -101,6 +69,7 @@ h3 {
 	color: #e76f51;
 	text-align: center;
 }
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -142,7 +111,7 @@ p, h1, h2, h3, h4, h5, h6 {
     --orange: #f4a261;
     --red: #e76f51;
 
-    --font-family: "Source Sans Pro", sans-serif;
+    --font-family: 'Poppins', sans-serif;
     --font-weight: 400;
     --font-style: normal;
 }

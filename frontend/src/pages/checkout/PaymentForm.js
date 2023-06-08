@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
+
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -11,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import {styled} from '@mui/system';
 // Custom Components
 import CardInput from './CardInput';
+import "./Checkout.css";
 
 
 // const CARD_OPTIONS = {
@@ -130,6 +132,7 @@ export default function PaymentForm() {
             <Button variant="contained" style = {{marginTop:20}} color="primary" className={classes.buttonShop} onClick = {() => navigate('/products')}>
               Continue Shopping
             </Button>
+
         </div>
         }
         </>
