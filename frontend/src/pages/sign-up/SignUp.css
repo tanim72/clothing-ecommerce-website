@@ -78,3 +78,23 @@
 .signUp-container > form > button:active {
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
+@media (max-width: 1000px) {
+  .signUp-container {
+    grid-template-columns: 1fr;
+    grid-gap: 0;
+    height: auto;
+  }
+
+  .signUp-container img {
+    display: none;
+  }
+
+  .signUp-container > form {
+    margin-bottom: 100px;
+  }
+
+  .signUp-container > form > input {
+    width: 100%;
+  }
+}
