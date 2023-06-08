@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
+const stripe = require("stripe")("sk_test_51NG5A8DKLQI0c41jkT8Irv0G9UCPVgsjLciLrWhpsLftpotFWnnGwJwh42NQ794ZMORzJYnQAhEp38KqocBhogk100wuMYtNwe")
+//was process.env.STRIPE_SECRET_KEY, but was giving errors
 const bodyParser = require("body-parser")
 const cors = require("cors")
 var router = express.Router();
