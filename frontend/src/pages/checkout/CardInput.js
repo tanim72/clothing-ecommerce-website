@@ -4,7 +4,7 @@ import {CardElement} from '@stripe/react-stripe-js';
 const CARD_ELEMENT_OPTIONS = {
   style: {
     base: {
-      'color': '#32325d',
+      'color': '#2a9d8f',
       'fontFamily': '"Helvetica Neue", Helvetica, sans-serif',
       'fontSmoothing': 'antialiased',
       'fontSize': '16px',

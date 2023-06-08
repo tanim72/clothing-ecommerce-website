@@ -59,16 +59,10 @@
 
 .buttonShop {
     position: absolute;
+	color: #2a9d8f;
     top: 50%;
 }
 
-h1,
-h3 {
-	font-family: 'Poppins', sans-serif;
-	font-weight: 400;
-	color: #e76f51;
-	text-align: center;
-}
 
 *, *::before, *::after {
     box-sizing: border-box;

@@ -130,7 +130,9 @@ export default function PaymentForm() {
         {!success ?
         <Card className={classes.root}>
         <CardContent className={classes.content}>
+            <div class="wrapperShop">
             <h1>Pay with Stripe</h1>
+            </div>
           <TextField
             label='Email'
             id='outlined-email-input'
@@ -145,7 +147,7 @@ export default function PaymentForm() {
           />
           <CardInput />
           <div className={classes.div}>
-            <Button variant="contained" style = {{marginTop:20}} color="primary" className={classes.button} onClick={handleSubmit}>
+            <Button variant="contained" style = {{backgroundColor: '#2a9d8f', color: 'white', marginTop:20}} color= "primary" className={classes.button} onClick={handleSubmit}>
               Pay
             </Button>
            </div>
@@ -154,12 +156,15 @@ export default function PaymentForm() {
         : 
         <div class="wrapperShop">
             <h1>Your Payment Was Succesful!</h1>
-            <Button variant="contained" style = {{marginTop:20}} color="primary" className={classes.buttonShop} onClick = {() => navigate('/products')}>
-              Continue Shopping
-            </Button>
+            <Button style={{ backgroundColor: '#2a9d8f', color: 'white' }} onClick = {() => navigate('/')} color="primary">Continue Shopping</Button>
 
         </div>
         }
         </>
     )
 }
+
+// font-family: 'Poppins', sans-serif;
+// 	font-weight: 400;
+// 	color: #e76f51;
+// 	text-align: center;
