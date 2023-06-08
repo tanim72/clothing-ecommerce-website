@@ -83,7 +83,7 @@ export default function ClothingCard(props) {
           >
             {props.title}
           </Typography>
-          <Box marginLeft={"-5%"} marginBottom={"1.2%"}>
+          <Box marginLeft={"-5%"} marginBottom={"1.2%"} marginTop={"1.2%"}>
             <Divider width={"105%"} />
           </Box>
           <Typography

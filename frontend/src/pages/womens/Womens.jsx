@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
+import { Typography } from "@mui/material";
 import Cookies from "js-cookie";
 import ClothingCard from "../ClothingCard";
 
@@ -41,8 +42,16 @@ export default function Mens() {
 
   return (
     <>
-      <div style={{ textAlign: "center" }}>
-        <h1>Womens</h1>
+      <div style={{ textAlign: "center", backgroundColor: "#f4a261" }}>
+        <Typography
+          variant="h3"
+          fontFamily={"Poppins"}
+          padding={"20px"}
+          color={"#264653"}
+          sx={{ fontWeight: "bold" }}
+        >
+          Women's Clothing
+        </Typography>
         <div
           style={{
             display: "flex",
