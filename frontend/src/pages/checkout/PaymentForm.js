@@ -3,9 +3,9 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import "./Checkout.css";
 
-const appearance = {
-    theme: 'stripe'
-  };
+// const appearance = {
+//     theme: 'stripe'
+//   };
 const CARD_OPTIONS = {
 	iconStyle: "solid",
 	style: {
@@ -41,7 +41,7 @@ export default function PaymentForm() {
     if(!error) {
         try {
             const {id} = paymentMethod;
-            const response = await axios.post("http://localhost:9000/payment", {
+            const response = await axios.post("https://forgedfashion-backend.onrender.com/payment", {
                 amount: 1000,
                 id
             });
