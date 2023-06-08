@@ -33,11 +33,11 @@ function Home() {
       <div className="home-choosePath-container">
         <div className="home-choosePath-left">
           <h2>Mens</h2>
-          <img src={modelMens} alt="men's model" />
+          <Link to="/mens"><img src={modelMens} alt="men's model" /></Link>
         </div>
         <div className="home-choosePath-right">
           <h2>Womens</h2>
-          <Link><img src={modelWomens} alt="women's model" /></Link>
+          <Link to="/womens"><img src={modelWomens} alt="women's model" /></Link>
         </div>
       </div>
     </div>
