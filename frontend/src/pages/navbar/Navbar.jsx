@@ -9,22 +9,24 @@ function Navbar() {
     const { numberOfItemsInCart } = useContext(CartQuantity);
   
     return (
-        <AppBar position="static">
-            <Toolbar>
-                <Typography variant="h6" style={{ flexGrow: 1 }}>
-                    <Button color="inherit" component={Link} to="/">
-                        E-Commerce
-                    </Button>
-                </Typography>
-                <Button color="inherit" component={Link} to="/products">Products</Button>
-                <Button color="inherit" component={Link} to="/cart/:cartId">
-                    <Badge badgeContent={numberOfItemsInCart} color="error">
-                        <ShoppingCartIcon />
-                    </Badge>
-                </Button>
-                <Button color="inherit" component={Link} to="/signup">Sign Up</Button>
-            </Toolbar>
-        </AppBar>
+        <AppBar position="static" style={{ backgroundColor: '#264653' }}>
+        <Toolbar>
+          <Button color="inherit" component={Link} to="/">
+            <img src={logoImage} alt="Logo" style={{ width: '65px' }} />
+          </Button>
+          <Typography variant="h6" style={{ flexGrow: 1, fontFamily: 'Poppins' }}>
+            Forged Fashion
+        </Typography>
+          <Button color="inherit" component={Link} to="/mens" style={{ fontFamily: 'Poppins' }}>Mens</Button>
+          <Button color="inherit" component={Link} to="/womens" style={{ fontFamily: 'Poppins' }}>Womens</Button>
+          <Button color="inherit" component={Link} to="/cart/:cartId">
+            <Badge badgeContent={numberOfItemsInCart} color="error">
+              <ShoppingCartIcon />
+            </Badge>
+          </Button>
+          <Button color="inherit" component={Link} to="/signup" style={{ fontFamily: 'Poppins' }}>Sign Up</Button>
+        </Toolbar>
+      </AppBar>
     );
   }
 
