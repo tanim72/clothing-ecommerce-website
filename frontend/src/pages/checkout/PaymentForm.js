@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
+import "./Checkout.css";
 
 const appearance = {
     theme: 'stripe'
@@ -71,10 +72,10 @@ export default function PaymentForm() {
                     <CardElement options = {CARD_OPTIONS}/>
                 </div>
             </fieldset>
-            <button>Pay</button>
+            <button className="paymentButton">Pay</button>
         </form>
         : 
-        <div>
+        <div className="succesful-checkout">
             <h2>Your Payment was Succesful!</h2>
         </div>
         }

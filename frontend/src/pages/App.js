@@ -11,6 +11,7 @@ import Mens from "./mens/Mens";
 import Womens from "./womens/Womens";
 import Cookies from "js-cookie";
 import StripeContainer from "./checkout/StripeContainer";
+import Home from "./home/Home.jsx";
 
 function App() {
   //const cartId = "xjq4swtq4rPECuJHCrzhXxKGIQM2";
@@ -44,7 +45,7 @@ function App() {
       >
         <Navbar />
         <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<Home />} />
           {/* <Route path="/products" element={<Products />} /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} /> */
