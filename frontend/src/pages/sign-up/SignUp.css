@@ -80,10 +80,15 @@
 }
 
 @media (max-width: 1000px) {
+  .signUp {
+    background-color: var(--blue);
+  }
+
   .signUp-container {
     grid-template-columns: 1fr;
     grid-gap: 0;
     height: auto;
+    box-shadow: none;
   }
 
   .signUp-container img {
