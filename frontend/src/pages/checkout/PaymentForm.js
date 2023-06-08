@@ -64,7 +64,7 @@ export default function PaymentForm() {
             });
 
             console.log(response);
-            setSuccess(true);
+            // setSuccess(true);
 
             if(response.data.success) {
                 console.log("succesful payment");
