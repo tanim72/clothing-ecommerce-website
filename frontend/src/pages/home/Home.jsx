@@ -3,6 +3,9 @@ import "./Home.css";
 import { useState } from "react";
 import banner1 from "./images/banner1.png";
 import banner2 from "./images/banner2.png";
+import modelMens from "./images/mens-model.png";
+import modelWomens from "./images/womens-model.png";
+import { Link } from "react-router-dom";
 
 function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -24,16 +27,17 @@ function Home() {
         </button>
       </header>
       <div className="home-choosePath-title">
+        <h1>Forged Fashion</h1>
         <h2>Select Styles</h2>
       </div>
       <div className="home-choosePath-container">
         <div className="home-choosePath-left">
-          <h2>Left</h2>
-          <div>Some image</div>
+          <h2>Mens</h2>
+          <img src={modelMens} alt="men's model" />
         </div>
         <div className="home-choosePath-right">
-          <h2>Right</h2>
-          <div>Some image</div>
+          <h2>Womens</h2>
+          <Link><img src={modelWomens} alt="women's model" /></Link>
         </div>
       </div>
     </div>
