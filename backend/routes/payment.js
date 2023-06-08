@@ -1,14 +1,14 @@
 const express = require("express")
-// const app = express()
-const stripe = require("stripe")(process.env.STRIPE_SECRET_TEST)
+const app = express()
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 const bodyParser = require("body-parser")
 const cors = require("cors")
 var router = express.Router();
 
-// app.use(bodyParser.urlencoded({ extended: true }))
-// app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
-// app.use(cors())
+app.use(cors())
 
 router.post("/", async (req, res) => {
 	let { amount, id } = req.body
