@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import ClothingCard from "../ClothingCard";
+import { Typography } from "@mui/material";
 
 export default function Mens() {
   const [mensShirts, setMensShirts] = useState([]);
@@ -41,8 +42,16 @@ export default function Mens() {
 
   return (
     <>
-      <div style={{ textAlign: "center" }}>
-        <h1>Mens</h1>
+      <div style={{ textAlign: "center", backgroundColor: "#f4a261" }}>
+        <Typography
+          variant="h3"
+          fontFamily={"Poppins"}
+          padding={"20px"}
+          color={"#264653"}
+          sx={{ fontWeight: "bold" }}
+        >
+          Men's Clothing
+        </Typography>
         <div
           style={{
             display: "flex",
@@ -55,6 +64,7 @@ export default function Mens() {
           {mensShirts &&
             mensShirts.map((obj, key) => (
               <ClothingCard
+                id={obj.id}
                 title={obj.title}
                 brand={obj.brand}
                 price={obj.price}
@@ -67,6 +77,7 @@ export default function Mens() {
           {mensWatches &&
             mensWatches.map((obj, key) => (
               <ClothingCard
+                id={obj.id}
                 title={obj.title}
                 brand={obj.brand}
                 price={obj.price}
@@ -79,6 +90,7 @@ export default function Mens() {
           {mensShoes &&
             mensShoes.map((obj, key) => (
               <ClothingCard
+                id={obj.id}
                 title={obj.title}
                 brand={obj.brand}
                 price={obj.price}

@@ -55,6 +55,7 @@ export default function Mens() {
           {womensDresses &&
             womensDresses.map((obj, key) => (
               <ClothingCard
+                id={obj.id}
                 title={obj.title}
                 brand={obj.brand}
                 price={obj.price}
@@ -67,6 +68,7 @@ export default function Mens() {
           {womensShoes &&
             womensShoes.map((obj, key) => (
               <ClothingCard
+                id={obj.id}
                 title={obj.title}
                 brand={obj.brand}
                 price={obj.price}
@@ -79,6 +81,7 @@ export default function Mens() {
           {womensWatches &&
             womensWatches.map((obj, key) => (
               <ClothingCard
+                id={obj.id}
                 title={obj.title}
                 brand={obj.brand}
                 price={obj.price}

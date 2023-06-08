@@ -2,10 +2,23 @@ import { React, useState } from "react";
 import { Box, Card, CardContent, Divider, Button } from "@mui/material";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
-import ToggleButton from "@mui/material/ToggleButton";
+import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
+import MuiToggleButton from "@mui/material/ToggleButton";
+import { styled } from "@mui/material/styles";
+
+const ToggleButtonNew = styled(MuiToggleButton)({
+  "&.Mui-selected, &.Mui-selected:hover": {
+    color: "white",
+    backgroundColor: "#264653",
+  },
+  "&:hover": {
+    color: "white",
+    backgroundColor: "#2a9d8f",
+  },
+});
 
 export default function ClothingCard(props) {
   const [size, setSize] = useState(null);
@@ -27,6 +40,7 @@ export default function ClothingCard(props) {
     if (size != null) {
       setState({ open: true, ...newState });
       addToCart();
+      setSize(null);
     } else {
       console.log("size is null");
       setStateErr({ openErr: true, ...newState });
@@ -36,6 +50,7 @@ export default function ClothingCard(props) {
   const addToCart = () => {
     let url = "http://localhost:9000/product/add-to-cart/" + props.userUID;
     axios.put(url, {
+      id: props.id.toString(),
       name: props.title,
       price: props.price,
       size: size,
@@ -56,23 +71,59 @@ export default function ClothingCard(props) {
         style={{
           margin: "10px",
           width: "430px",
-          height: "550px",
+          height: "650px",
         }}
       >
         <CardContent>
-          <Typography variant="h4">{props.title}</Typography>
+          <Typography
+            variant="h4"
+            fontFamily={"Poppins"}
+            color={"#264653"}
+            sx={{ fontWeight: "bold" }}
+          >
+            {props.title}
+          </Typography>
           <Box marginLeft={"-5%"} marginBottom={"1.2%"}>
             <Divider width={"105%"} />
           </Box>
-          <Typography variant="h5">{props.brand}</Typography>
-          <Typography variant="h5">${props.price}</Typography>
-          <Typography variant="h5">{props.rating}/5</Typography>
-          <img
-            alt="Product Thumbnail"
-            src={props.thumbnail}
-            width="200px"
-            height="200px"
-          />
+          <Typography
+            variant="h5"
+            fontFamily={"Poppins"}
+            color={"#264653"}
+            sx={{ fontStyle: "italic" }}
+          >
+            {props.brand}
+          </Typography>
+          <Typography variant="h5" fontFamily={"Poppins"} color={"#264653"}>
+            ${props.price}
+          </Typography>
+          <Box
+            display={"flex"}
+            alignContent={"center"}
+            justifyContent={"center"}
+          >
+            <Typography variant="h5" fontFamily={"Poppins"} color={"#264653"}>
+              {props.rating}/5
+            </Typography>
+            <StarOutlineIcon
+              style={{ marginTop: "2.5px", marginLeft: "5px" }}
+            />
+          </Box>
+          <div
+            style={{
+              display: "flex",
+              alignContent: "center",
+              justifyContent: "center",
+              padding: "10px",
+            }}
+          >
+            <img
+              alt="Product Thumbnail"
+              src={props.thumbnail}
+              width="300px"
+              height="300px"
+            />
+          </div>
           <Box>
             {props.isClothing ? (
               <ToggleButtonGroup
@@ -81,9 +132,9 @@ export default function ClothingCard(props) {
                 exclusive
                 onChange={(event, alignment) => setSize(alignment)}
               >
-                <ToggleButton value="S">S</ToggleButton>
-                <ToggleButton value="M">M</ToggleButton>
-                <ToggleButton value="L">L</ToggleButton>
+                <ToggleButtonNew value="S">S</ToggleButtonNew>
+                <ToggleButtonNew value="M">M</ToggleButtonNew>
+                <ToggleButtonNew value="L">L</ToggleButtonNew>
               </ToggleButtonGroup>
             ) : (
               <ToggleButtonGroup
@@ -92,13 +143,13 @@ export default function ClothingCard(props) {
                 exclusive
                 onChange={(event, alignment) => setSize(alignment)}
               >
-                <ToggleButton value="6">6</ToggleButton>
-                <ToggleButton value="7">7</ToggleButton>
-                <ToggleButton value="8">8</ToggleButton>
-                <ToggleButton value="9">9</ToggleButton>
-                <ToggleButton value="10">10</ToggleButton>
-                <ToggleButton value="11">11</ToggleButton>
-                <ToggleButton value="12">12</ToggleButton>
+                <ToggleButtonNew value="6">6</ToggleButtonNew>
+                <ToggleButtonNew value="7">7</ToggleButtonNew>
+                <ToggleButtonNew value="8">8</ToggleButtonNew>
+                <ToggleButtonNew value="9">9</ToggleButtonNew>
+                <ToggleButtonNew value="10">10</ToggleButtonNew>
+                <ToggleButtonNew value="11">11</ToggleButtonNew>
+                <ToggleButtonNew value="12">12</ToggleButtonNew>
               </ToggleButtonGroup>
             )}
           </Box>
@@ -109,6 +160,7 @@ export default function ClothingCard(props) {
                 vertical: "top",
                 horizontal: "center",
               })}
+              style={{ marginTop: "10px", backgroundColor: "#2a9d8f" }}
             >
               Add to cart
             </Button>
