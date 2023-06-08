@@ -17,7 +17,8 @@ function Navbar() {
           <Typography variant="h6" style={{ flexGrow: 1, fontFamily: 'Poppins' }}>
             Forged Fashion
         </Typography>
-          <Button color="inherit" component={Link} to="/products" style={{ fontFamily: 'Poppins' }}>Products</Button>
+          <Button color="inherit" component={Link} to="/mens" style={{ fontFamily: 'Poppins' }}>Mens</Button>
+          <Button color="inherit" component={Link} to="/womens" style={{ fontFamily: 'Poppins' }}>Womens</Button>
           <Button color="inherit" component={Link} to="/cart/:cartId">
             <Badge badgeContent={numberOfItemsInCart} color="error">
               <ShoppingCartIcon />
