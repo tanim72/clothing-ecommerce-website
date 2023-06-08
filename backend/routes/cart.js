@@ -4,7 +4,7 @@ const { db } = require('./firebase');
 const { doc, getDoc, updateDoc, arrayRemove } = require('firebase/firestore');
 
 // Get all items in cart
-router.get('/:cartId', async function(req, res, next) {
+router.get('/:cartId', async function (req, res, next) {
   const cartId = req.params.cartId;
 
   const cartDoc = doc(db, 'carts', cartId);
@@ -19,7 +19,7 @@ router.get('/:cartId', async function(req, res, next) {
 });
 
 // Delete an item from the cart
-router.delete('/:cartId/:itemId/:itemSize', async function(req, res, next) {
+router.delete('/:cartId/:itemId/:itemSize', async function (req, res, next) {
   const cartId = req.params.cartId;
   const itemId = req.params.itemId;
   const itemSize = req.params.itemSize;
@@ -48,7 +48,7 @@ router.delete('/:cartId/:itemId/:itemSize', async function(req, res, next) {
 });
 
 // Update the quantity of an item in the cart
-router.patch('/:cartId/:itemId/:itemSize', async function(req, res, next) {
+router.patch('/:cartId/:itemId/:itemSize', async function (req, res, next) {
   const cartId = req.params.cartId;
   const itemId = req.params.itemId;
   const itemSize = req.params.itemSize;

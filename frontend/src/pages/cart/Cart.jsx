@@ -40,11 +40,11 @@ function Cart() {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`http://localhost:9000/cart/${cartId}/${itemToDelete}`);
-            setCartItems(cartItems.filter(item => item.id !== itemToDelete));
+            await axios.delete(`http://localhost:9000/cart/${cartId}/${itemToDelete.id}/${itemToDelete.size}`);
+            setCartItems(cartItems.filter(item => !(item.id === itemToDelete.id && item.size === itemToDelete.size)));
             let quantity = 0;
             cartItems.forEach(item => {
-                if (item.id !== itemToDelete) {
+                if (!(item.id === itemToDelete.id && item.size === itemToDelete.size)) {
                     quantity += item.quantity;
                 }
             });
@@ -55,10 +55,12 @@ function Cart() {
         }
     };
 
-    const openDeleteConfirm = (itemId) => {
-        setItemToDelete(itemId);
+
+    const openDeleteConfirm = (item) => {
+        setItemToDelete(item);
         setDeleteConfirm(true);
     };
+
 
     const closeDeleteConfirm = () => {
         setItemToDelete(null);
@@ -106,7 +108,7 @@ function Cart() {
                                     <Typography>{item.quantity}</Typography>
                                     <IconButton onClick={() => updateQuantity(item.id, item.size, item.quantity + 1)}><Add /></IconButton>
 
-                                    <IconButton onClick={() => openDeleteConfirm(item.id)}><Delete /></IconButton>
+                                    <IconButton onClick={() => openDeleteConfirm(item)}><Delete /></IconButton>
                                 </CardActions>
                             </Grid>
                             <Grid item xs={4}>
