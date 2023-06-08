@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import {styled} from '@mui/system';
 import CardInput from './CardInput';
 import "./Checkout.css";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function PaymentForm() {
@@ -71,6 +72,9 @@ export default function PaymentForm() {
                 console.log("succesful payment");
                 setSuccess(true);
             }
+            else {
+                toast.error("Payment Failed: Try Another Card");
+            }
 
         } catch (error) {
             console.log("Error", error);
@@ -108,8 +112,11 @@ export default function PaymentForm() {
               Pay
             </Button>
            </div>
+           <ToastContainer /> 
         </CardContent>
+        
       </Card>
+      
         : 
         <div style = {{backgroundColor: '#f4a261'}} class="wrapperShop">
             <Typography style = {{paddingTop:20}} variant="h5">Your Payment Was Succesful!</Typography>
