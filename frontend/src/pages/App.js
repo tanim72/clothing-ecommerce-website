@@ -9,9 +9,13 @@ import SignUp from "./sign-up/SignUp.jsx";
 import "./App.css";
 import Mens from "./mens/Mens";
 import Womens from "./womens/Womens";
+import Cookies from "js-cookie";
+import StripeContainer from "./checkout/StripeContainer";
 
 function App() {
-  const cartId = "pU6YrRuSDYwBchVp2p68";
+  //const cartId = "xjq4swtq4rPECuJHCrzhXxKGIQM2";
+  const cartId = Cookies.get("uid");
+
   const [numberOfItemsInCart, setNumberOfItemsInCart] = useState(0);
 
   useEffect(() => {
@@ -31,7 +35,7 @@ function App() {
     };
 
     fetchCartItems();
-  }, []);
+  }, [cartId]);
 
   return (
     <Router>
@@ -47,6 +51,7 @@ function App() {
           <Route path="/womens" element={<Womens />} />
           <Route path="/mens" element={<Mens />} />
           <Route path="/cart/:cartId" element={<Cart />} />
+          <Route path="/checkout" element={<StripeContainer />} />
         </Routes>
       </CartQuantity.Provider>
     </Router>
