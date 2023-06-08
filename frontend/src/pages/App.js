@@ -32,7 +32,7 @@ function App() {
     };
 
     fetchCartItems();
-  }, []);
+  }, [cartId]);
 
   return (
     <Router>

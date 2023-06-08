@@ -19,9 +19,10 @@ router.get('/:cartId', async function(req, res, next) {
 });
 
 // Delete an item from the cart
-router.delete('/:cartId/:itemId', async function(req, res, next) {
+router.delete('/:cartId/:itemId/:itemSize', async function(req, res, next) {
   const cartId = req.params.cartId;
   const itemId = req.params.itemId;
+  const itemSize = req.params.itemSize;
 
   const cartDoc = doc(db, 'carts', cartId);
   const cartSnapshot = await getDoc(cartDoc);
@@ -32,7 +33,7 @@ router.delete('/:cartId/:itemId', async function(req, res, next) {
   }
 
   const items = cartSnapshot.data().items;
-  const item = items.find(item => item.id === itemId);
+  const item = items.find(item => item.id === itemId && item.size === itemSize);
 
   if (!item) {
     res.status(404).send('Item not found in cart');
@@ -47,9 +48,10 @@ router.delete('/:cartId/:itemId', async function(req, res, next) {
 });
 
 // Update the quantity of an item in the cart
-router.patch('/:cartId/:itemId', async function(req, res, next) {
+router.patch('/:cartId/:itemId/:itemSize', async function(req, res, next) {
   const cartId = req.params.cartId;
   const itemId = req.params.itemId;
+  const itemSize = req.params.itemSize;
   const newQuantity = req.body.quantity;
 
   const cartDoc = doc(db, 'carts', cartId);
@@ -61,7 +63,7 @@ router.patch('/:cartId/:itemId', async function(req, res, next) {
   }
 
   const items = cartSnapshot.data().items;
-  const itemIndex = items.findIndex(item => item.id === itemId);
+  const itemIndex = items.findIndex(item => item.id === itemId && item.size === itemSize);
 
   if (itemIndex === -1) {
     res.status(404).send('Item not found in cart');
@@ -75,5 +77,6 @@ router.patch('/:cartId/:itemId', async function(req, res, next) {
 
   res.status(200).json(items[itemIndex]);
 });
+
 
 module.exports = router;
