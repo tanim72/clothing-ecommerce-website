@@ -17,13 +17,13 @@ function Navbar() {
           <Typography variant="h6" style={{ flexGrow: 1, fontFamily: 'Poppins' }}>
             Forged Fashion
         </Typography>
-          <Button color="inherit" component={Link} to="/products">Products</Button>
+          <Button color="inherit" component={Link} to="/products" style={{ fontFamily: 'Poppins' }}>Products</Button>
           <Button color="inherit" component={Link} to="/cart/:cartId">
             <Badge badgeContent={numberOfItemsInCart} color="error">
               <ShoppingCartIcon />
             </Badge>
           </Button>
-          <Button color="inherit" component={Link} to="/signup">Sign Up</Button>
+          <Button color="inherit" component={Link} to="/signup" style={{ fontFamily: 'Poppins' }}>Sign Up</Button>
         </Toolbar>
       </AppBar>
     );
