@@ -25,6 +25,7 @@ export default function PaymentForm() {
 
     // State
     const [email, setEmail] = useState('');
+    const [address, setAddress] = useState('');
 
     const useStyles = styled({
         root: {
@@ -56,7 +57,11 @@ export default function PaymentForm() {
             type: "card", 
             card: elements.getElement(CardElement)
         })
+    if(address==='') {
+      toast.error("Please enter a shipping address");
 
+    }
+    else{
     if(!error) {
         try {
             const {id} = paymentMethod;
@@ -83,6 +88,7 @@ export default function PaymentForm() {
     } else {
         console.log(error.message);
     }
+  }
 }
 
     return (
@@ -101,13 +107,25 @@ export default function PaymentForm() {
             margin='normal'
             variant='outlined'
             type='email'
-            required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             fullWidth
           />
+          <TextField
+            label='Shipping Address'
+            style = {{backgroundColor: '#ffffff'}}
+            id='outlined-email-input'
+            margin='normal'
+            variant='outlined'
+            type='address'
+            required
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            fullWidth
+          />
+          
           <CardInput />
-          <div className={classes.div}>
+          <div  className={classes.div}>
             <Button variant="contained" style = {{backgroundColor: '#2a9d8f', color: 'white', marginTop:20}} color= "primary" className={classes.button} onClick={handleSubmit}>
               Pay
             </Button>
