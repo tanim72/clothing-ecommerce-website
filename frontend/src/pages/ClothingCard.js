@@ -56,7 +56,7 @@ export default function ClothingCard(props) {
   };
 
   const addToCart = () => {
-    let url = "http://localhost:9000/product/add-to-cart/" + props.userUID;
+    let url = "https://forgedfashion-backend.onrender.com/product/add-to-cart/" + props.userUID;
     console.log(url);
     axios
       .put(url, {

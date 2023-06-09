@@ -41,7 +41,7 @@ function SignUp() {
 
         form.reset();
 
-        let url = "http://localhost:9000/product/add-cart/" + res.data;
+        let url = "https://forgedfashion-backend.onrender.com/product/add-cart/" + res.data;
         console.log(url);
         axios.put(url).then((result) => console.log(result));
 
