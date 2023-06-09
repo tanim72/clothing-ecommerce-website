@@ -48,15 +48,18 @@ export default function ClothingCard(props) {
   };
 
   const addToCart = () => {
-    let url = "https://forgedfashion-backend.onrender.com/product/add-to-cart/" + props.userUID;
-    axios.put(url, {
-      id: props.id.toString(),
-      name: props.title,
-      price: props.price,
-      size: size,
-      quantity: 1,
-      url: props.thumbnail,
-    });
+    let url = "http://localhost:9000/product/add-to-cart/" + props.userUID;
+    console.log(url);
+    axios
+      .put(url, {
+        id: props.id.toString(),
+        name: props.title,
+        price: props.price,
+        size: size,
+        quantity: 1,
+        url: props.thumbnail,
+      })
+      .then((result) => console.log(result));
   };
 
   const handleClose = () => {
