@@ -9,7 +9,6 @@ import "./Checkout.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 export default function PaymentForm() {
     const theme = createTheme({
         typography: {
@@ -70,11 +69,7 @@ export default function PaymentForm() {
                 id
             });
 
-            console.log(response);
-            // setSuccess(true);
-
             if(response.data.success) {
-                console.log("succesful payment");
                 setSuccess(true);
             }
             else {
@@ -114,7 +109,7 @@ export default function PaymentForm() {
           <TextField
             label='Shipping Address'
             style = {{backgroundColor: '#ffffff'}}
-            id='outlined-email-input'
+            id='outlined-address-input'
             margin='normal'
             variant='outlined'
             type='address'

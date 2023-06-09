@@ -1,7 +1,6 @@
 const express = require("express")
 const app = express()
 const stripe = require("stripe")("sk_test_51NG5A8DKLQI0c41jkT8Irv0G9UCPVgsjLciLrWhpsLftpotFWnnGwJwh42NQ794ZMORzJYnQAhEp38KqocBhogk100wuMYtNwe")
-//was process.env.STRIPE_SECRET_KEY, but was giving errors
 const bodyParser = require("body-parser")
 const cors = require("cors")
 var router = express.Router();
@@ -21,7 +20,6 @@ router.post("/", async (req, res) => {
 			payment_method: id,
 			confirm: true
 		})
-		console.log("Payment", payment)
 		res.json({
 			message: "Payment successful",
 			success: true
@@ -34,9 +32,5 @@ router.post("/", async (req, res) => {
 		})
 	}
 })
-
-// app.listen(process.env.PORT, () => {
-// 	console.log("Sever is listening on port 9000")
-// })
 
 module.exports = router;
