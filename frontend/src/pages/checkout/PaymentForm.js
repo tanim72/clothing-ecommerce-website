@@ -69,11 +69,7 @@ export default function PaymentForm() {
                 id
             });
 
-            console.log(response);
-            // setSuccess(true);
-
             if(response.data.success) {
-                console.log("succesful payment");
                 setSuccess(true);
             }
             else {
