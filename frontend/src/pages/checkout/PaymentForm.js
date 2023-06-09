@@ -9,7 +9,6 @@ import "./Checkout.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 export default function PaymentForm() {
     const theme = createTheme({
         typography: {
@@ -65,7 +64,7 @@ export default function PaymentForm() {
     if(!error) {
         try {
             const {id} = paymentMethod;
-            const response = await axios.post("https://forgedfashion-backend.onrender.com/payment", {
+            const response = await axios.post("http://localhost:9000/payment", {
                 amount: 1000,
                 id
             });
@@ -114,7 +113,7 @@ export default function PaymentForm() {
           <TextField
             label='Shipping Address'
             style = {{backgroundColor: '#ffffff'}}
-            id='outlined-email-input'
+            id='outlined-address-input'
             margin='normal'
             variant='outlined'
             type='address'
