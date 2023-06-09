@@ -68,6 +68,8 @@ router.post("/login", function (req, res) {
       console.log("Error logging in:", errorMessage);
       if (errorCode === "auth/user-not-found") {
         res.status(404).send("User not found");
+      } else if (errorCode === "auth/wrong-password") {
+        res.status(401).send("Incorrect password");
       } else {
         res.status(errorCode).send(errorMessage);
       }
