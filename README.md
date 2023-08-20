@@ -1,5 +1,5 @@
 # Forged Fashion
-Forged Fashion is a completely online clothing center for both men's and women’s shirts, dresses, shoes, and more. With a clean UI and easy-to-navigate pages, online shopping has never been easier! The following link takes you to our presentation: https://docs.google.com/presentation/d/1k83T4Bb1nolZEu5VIIcdgfiPrVSM_Hv8FDf8zpz25cY/edit#slide=id.p 
+Forged Fashion is a completely online clothing center for both men's and women’s shirts, dresses, shoes, and more. With a clean UI and easy-to-navigate pages, online shopping has never been easier! The following link takes you to our presentation: https://docs.google.com/presentation/d/1k83T4Bb1nolZEu5VIIcdgfiPrVSM_Hv8FDf8zpz25cY/edit?usp=sharing 
 
 ## Table of Contents
 Installation
